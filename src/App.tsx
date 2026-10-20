@@ -17,7 +17,6 @@ import Shoes from './pages/Shoes'
 import Shirts from './pages/Shirts'
 import Search from './pages/search'
 import Product from './pages/Product'
-import BagDetail from './pages/BagDetail'
 
 function App() {
   return (
@@ -30,7 +29,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/bags" element={<Bags />} />
-        <Route path="/bags/:id" element={<BagDetail />} />
         <Route path="/bags/handbags" element={<Bags sub="Handbags" />} />
         <Route path="/bags/backpacks" element={<Bags sub="Backpacks" />} />
         <Route path="/bags/clutches" element={<Bags sub="Clutches" />} />
@@ -71,7 +69,7 @@ function App() {
         <Route path="/shirts/tshirts" element={<Shirts sub="T-Shirts" />} />
         <Route path="/shirts/polo" element={<Shirts sub="Polo" />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/product/:id" element={<Product />} />
+        <Route path="/product" element={<Product />} />
       </Routes>
       <Footer />
     </>

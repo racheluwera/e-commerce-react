@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { ShoppingCart, ArrowLeft, Star, Package, Tag, Layers, Pencil, Trash2, CheckCircle, XCircle } from "lucide-react";
 import { useCart } from "../contexts/useCart";
-import type { Product } from "../contexts/cartTypes";
+import type { Product as ProductType } from "../contexts/cartTypes";
 
 // ── Breadcrumb ────────────────────────────────────────────────────────────────
 const Breadcrumb = ({ name }: { name: string }) => (
@@ -83,7 +83,7 @@ const InfoRow = ({ icon, label, value }: { icon: React.ReactNode; label: string;
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
 const Product = () => {
-  const { state } = useLocation() as { state: Product | null };
+  const { state } = useLocation() as { state: ProductType | null };
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [showDelete, setShowDelete] = useState(false);
@@ -239,5 +239,4 @@ const Product = () => {
     </>
   );
 };
-
 export default Product;

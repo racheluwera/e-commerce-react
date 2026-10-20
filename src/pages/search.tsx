@@ -1,14 +1,15 @@
 import { useSearchParams } from "react-router-dom";
 import { useCart } from "../contexts/useCart";
 import { ShoppingCart } from "lucide-react";
+import type { Product } from "../contexts/cartTypes";
 
-const allProducts = [
-  { name: "Modern Chair", price: "$120.00", img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&q=80" },
-  { name: "Wooden Table", price: "$250.00", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" },
-  { name: "Sofa Set", price: "$899.00", img: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80" },
-  { name: "Bed Frame", price: "$450.00", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80" },
-  { name: "Bookshelf", price: "$180.00", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&q=80" },
-  { name: "Desk Lamp", price: "$60.00", img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80" },
+const allProducts: Product[] = [
+  { id: 1, name: "Modern Chair", price: "$120.00", img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&q=80" },
+  { id: 2, name: "Wooden Table", price: "$250.00", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" },
+  { id: 3, name: "Sofa Set", price: "$899.00", img: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80" },
+  { id: 4, name: "Bed Frame", price: "$450.00", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80" },
+  { id: 5, name: "Bookshelf", price: "$180.00", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&q=80" },
+  { id: 6, name: "Desk Lamp", price: "$60.00", img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80" },
 ];
 
 const Search = () => {
