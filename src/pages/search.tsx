@@ -31,7 +31,7 @@ const Search = () => {
       {results.length === 0 ? (
         <p className="text-gray-500">No products found for "{query}".</p>
       ) : (
-        <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-6">
           {results.map((product, i) => (
             <div key={i} className="border border-gray-200 group cursor-pointer">
               <div className="overflow-hidden">

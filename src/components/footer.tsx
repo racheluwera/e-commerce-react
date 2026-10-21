@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { Share2, Camera, MessageCircle, Play } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { newsletterSchema, type NewsletterValues } from "../validation/schema";
 
 const Footer = () => {
+  const [subscribed, setSubscribed] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<NewsletterValues>({
+    resolver: zodResolver(newsletterSchema),
+    defaultValues: { email: "" },
+  });
+
+  const onSubmit = (data: NewsletterValues) => {
+    console.log("Newsletter:", data);
+    setSubscribed(true);
+    reset();
+    setTimeout(() => setSubscribed(false), 4000);
+  };
+
   return (
     <footer className="bg-[#1a1a2e] text-gray-400 mt-auto">
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -39,10 +61,23 @@ const Footer = () => {
         <div>
           <h4 className="text-white font-semibold text-base mb-4">Newsletter</h4>
           <p className="text-sm leading-relaxed mb-4">Subscribe to get the latest deals and offers.</p>
-          <div className="flex gap-2">
-            <input type="email" placeholder="Enter your email" className="flex-1 px-3 py-2 rounded-md bg-[#2e303a] border border-[#2e303a] text-white text-sm outline-none focus:border-[#7cb800]" />
-            <button type="button" className="px-4 py-2 bg-[#7cb800] hover:bg-[#6aa300] text-white text-sm rounded-md transition-colors">Subscribe</button>
-          </div>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className={`flex-1 px-3 py-2 rounded-md bg-[#2e303a] border text-white text-sm outline-none focus:border-[#7cb800] ${
+                  errors.email ? "border-red-500" : "border-[#2e303a]"
+                }`}
+                {...register("email")}
+              />
+              <button type="submit" className="px-4 py-2 bg-[#7cb800] hover:bg-[#6aa300] text-white text-sm rounded-md transition-colors">
+                Subscribe
+              </button>
+            </div>
+            {errors.email && <p className="text-xs text-red-400 mt-2">{errors.email.message}</p>}
+            {subscribed && <p className="text-xs text-green-400 mt-2">Subscribed! Check your inbox.</p>}
+          </form>
         </div>
 
       </div>
